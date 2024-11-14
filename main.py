@@ -3,22 +3,29 @@ from write_solution import write_solution
 from initial_solution import create_initial_solution
 from local_search import local_search
 
+
 def main():
-    instances_size = [
+    instances = [
         "tiny",
-        "small",
-        "medium",
-        "large"
+        "small_1",
+        "small_2",
+        "medium_1",
+        "medium_2",
+        "large_1",
+        "large_2"
     ]
-    
-    instance_size = "tiny"
-    instance_dict = read_instance(instance_size)
 
-    initial_solution = create_initial_solution(instance_dict)
+    for instance in instances:
+        print(instance)
+        instance_dict = read_instance(instance)
 
-    solution = local_search(initial_solution, instance_dict)
+        initial_solution = create_initial_solution(instance_dict)
 
-    write_solution(f"{instance_size}_0.json", solution, instance_dict)
+        # solution = local_search(initial_solution, instance_dict)
+
+        write_solution(f"{instance}.json",
+                       initial_solution, instance_dict)
+
 
 if __name__ == "__main__":
     main()
